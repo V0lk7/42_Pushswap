@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 09:52:15 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:36:49 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,19 @@ int	main(int argc, char **argv)
 	ft_pre_check(argc, argv);
 	test = ft_prep_list(argv);
 	size = ft_size(test);
-	cir = set_stack(test, size);
+	if (size == 1)
+	{
+		ft_free(test, NULL, NULL);
+		return (0);
+	}
+	cir = init_stack_a(test, size);
 	ft_free(test, NULL, NULL);
 	while (i <= size - 1)
 	{
 		printf("%i\n", cir->tab[cir->head + i]);
 		i++;
 	}
+	i = 0;
 	ft_free(NULL, NULL, cir);
 	return (0);
 }
