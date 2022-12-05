@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 09:06:58 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/05 10:44:25 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free(char **tab, char *str, t_cbuf *buffer)
 	int	i;
 
 	i = 0;
-	if (*tab)
+	if (tab && *tab)
 	{
 		while (tab[i])
 		{
@@ -28,8 +28,11 @@ void	ft_free(char **tab, char *str, t_cbuf *buffer)
 	}
 	if (str)
 		free (str);
-	if (buffer)
+	if (buffer && buffer->tab)
+	{
+		free(buffer->tab);
 		free(buffer);
+	}
 }
 
 char	*ft_strjoin_free(char *s1, char const *s2)

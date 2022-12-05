@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:24:04 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/29 16:33:38 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/05 09:38:24 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
 size_t	cbuf_size(t_cbuf *buffer)
 {
@@ -51,7 +51,7 @@ t_cbuf	*cbuf_init(int *tab, size_t size)
 {
 	t_cbuf	*new_cbuf;
 
-	if (!*tab || size <= 0)
+	if (size <= 0)
 		return (NULL);
 	new_cbuf = malloc(sizeof(t_cbuf));
 	if (new_cbuf == NULL)

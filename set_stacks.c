@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:19:51 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/29 16:31:35 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/05 10:39:46 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_cbuf	*set_stack(char	**list, int size)
 			ft_free(list, NULL, NULL);
 			exit (0);
 		}
+		ft_add_data(stack, output);
 		i++;
 	}
 	return (stack);
