@@ -6,11 +6,35 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 10:44:25 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 10:33:26 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+t_bool	ft_sorted(t_cbuf *stack)
+{
+	int i;
+	int	j;
+
+	if (stack->max == 1)
+		return (TRUE);
+	i = stack->head;
+	while (i < stack->tail)
+	{
+		j = i + 1;
+		if (stack->tab[i] >= stack->tab[j])
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+void	ft_errors(void)
+{
+	ft_putstr_fd("Errors\n", 2);
+	exit (0);
+}
 
 void	ft_free(char **tab, char *str, t_cbuf *buffer)
 {

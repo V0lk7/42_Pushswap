@@ -6,21 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:42:35 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 13:46:13 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 10:14:06 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-void	ft_errors(int flag)
-{
-	if (flag == 1)
-	{
-		ft_putstr_fd("Errors\n", 2);
-		exit (0);
-	}
-	exit (0);
-}
 
 void	ft_pre_check(int argc, char **argv)
 {
@@ -39,13 +29,13 @@ void	ft_pre_check(int argc, char **argv)
 		{
 			if (ft_isdigit(argv[i][j]) == 0 && argv[i][j] != '-'
 				&& argv[i][j] != '+' && argv[i][j] != ' ')
-				ft_errors(1);
+				ft_errors();
 			if (ft_isdigit(argv[i][j]) == 1)
 				k++;
 			j++;
 		}
 		if (k == 0)
-			ft_errors(1);
+			ft_errors();
 		i++;
 	}
 }
@@ -80,4 +70,26 @@ int	ft_overflow(char *list, int output)
 			return (0);
 	}
 	return (1);
+}
+
+void	ft_duplicate(t_cbuf *stack)
+{
+	int i;
+	int	j;
+
+	i = stack->head;
+	while (i < stack->tail)
+	{
+		j = i + 1;
+		while (j <= stack->tail)
+		{
+			if (stack->tab[i] == stack->tab[j])
+			{
+				ft_free(NULL, NULL, stack);
+				ft_errors();
+			}
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:19:51 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 15:36:08 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 10:47:40 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_cbuf	*init_stack_a(char **list, int size)
 		if (output >= -1 && output <= 0 && ft_overflow(list[i], output) == 1)
 		{
 			ft_free(list, NULL, stack);
-			ft_errors(1);
+			ft_errors();
 		}
 		ft_add_data(stack, output);
 		i++;
