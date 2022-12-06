@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:24:04 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/05 09:38:24 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:36:33 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	reset_cbuf(t_cbuf *buffer)
 
 t_bool	cbuf_full(t_cbuf *buffer)
 {
+	if (stack->head == 0 && stack->tail == stack->max)
+		stack->full = TRUE;
 	return (buffer->full);
 }
 

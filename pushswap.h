@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/06 10:31:02 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:33:34 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ size_t		cbuf_size(t_cbuf *buffer);
 t_cbuf		*init_stack_a(char **list, int size);
 t_cbuf		*set_stack(int size);
 t_bool		ft_sorted(t_cbuf *stack);
-
+void		ft_swap_a(t_cbuf *stack);
+void		ft_swap_b(t_cbuf *stack);
 #endif

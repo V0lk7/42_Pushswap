@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:42:35 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/06 10:14:06 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:14:14 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ int	ft_overflow(char *list, int output)
 	}
 	if (output == 0)
 	{
-		if (ft_strlen(list) == 1 && list[0] == '0')
+		while (list[i] == '0')
+			i++;
+		if (ft_strlen(list) == (size_t)i)
 			return (0);
 	}
 	return (1);
