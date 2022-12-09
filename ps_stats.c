@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:29:22 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 10:27:13 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:28:24 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_bool	ft_is_sorted(int *tab, size_t size)
 		j = i + 1;
 		while (j < size)
 		{
-			if (tab[i] >  tab[j])
+			if (tab[i] < tab[j])
 				return (FALSE);
 			j++;
 		}

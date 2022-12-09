@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:42:35 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 11:07:43 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:01:46 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	size_list(char **list)
 	int	size;
 
 	size = 0;
-	while(list[size])
+	while (list[size])
 		size++;
 	return (size);
 }
@@ -68,7 +68,7 @@ int	ft_overflow(char *list, int output)
 {
 	size_t	i;
 
-	i = 0;	
+	i = 0;
 	if (output == -1)
 	{
 		if (ft_strlen(list) == 2 && list[0] == '-' && list[1] == '1')

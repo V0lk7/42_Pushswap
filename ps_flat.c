@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:53:14 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 09:07:25 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:02:14 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_set_space(char *str)
 char	**ft_prep_list(char **argv)
 {
 	int		i;
-	char 	*str;
+	char	*str;
 	char	**list;
 
 	i = 1;

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 10:26:17 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:29:41 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_stack
 {
-	int *tab;
+	int		*tab;
 	size_t	max;
 }	t_stack;
 
@@ -40,12 +40,15 @@ void		ft_errors(void);
 void		ft_free(char **tab, char *str, t_stack *stack);
 char		*ft_strjoin_free(char *s1, char const *s2);
 /*	 in ps_set_stack.c	*/
-t_bool		ft_add_data(int *tab, char **list);
+t_bool		ft_add_data(int *tab, char **list, size_t size);
 void		ft_add_zero(int *tab, size_t size);
+t_bool		set_stack_a(t_stack *stack, char **list, size_t size);
 t_stack		*ft_init_stack(size_t size, char **list);
 /*	in ps_stats.c		*/
 t_bool		ft_is_sorted(int *tab, size_t size);
 /*	in ps_move .c		*/
-
-
+void		ft_swap(t_stack *stack);
+void		ft_push(t_stack *give, t_stack *take);
+void		ft_rotate(t_stack *stack);
+void		ft_rev_rotate(t_stack *stack);
 #endif
