@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap_utils.c                                   :+:      :+:    :+:   */
+/*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/06 10:33:26 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/09 08:43:05 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
+/*
 t_bool	ft_sorted(t_cbuf *stack)
 {
 	int i;
@@ -29,14 +29,14 @@ t_bool	ft_sorted(t_cbuf *stack)
 	}
 	return (TRUE);
 }
-
+*/
 void	ft_errors(void)
 {
 	ft_putstr_fd("Errors\n", 2);
 	exit (0);
 }
 
-void	ft_free(char **tab, char *str, t_cbuf *buffer)
+void	ft_free(char **tab, char *str, t_stack *stack)
 {
 	int	i;
 
@@ -52,10 +52,10 @@ void	ft_free(char **tab, char *str, t_cbuf *buffer)
 	}
 	if (str)
 		free (str);
-	if (buffer && buffer->tab)
+	if (stack && stack->tab)
 	{
-		free(buffer->tab);
-		free(buffer);
+		free(stack->tab);
+		free(stack);
 	}
 }
 

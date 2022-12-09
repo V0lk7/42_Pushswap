@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/05 09:35:13 by jduval           ###   ########.fr        #
+#    Updated: 2022/12/09 09:35:43 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ INCLUDE = libft/include/
 
 BUILD_DIR = .build
 
-SRCS = 	pushswap.c		pushswap_utils.c \
-		ft_flat_str.c 	ft_parse.c \
-		set_stacks.c 	circular_buf_set.c \
+SRCS = 	pushswap.c		ps_utils.c \
+		ps_flat.c 		ps_parse.c \
+		ps_set_stack.c 	ps_stats.c  \
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -51,6 +51,8 @@ $(BUILD_DIR)/%.o : %.c
 	@$(DIRDUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
+
+
 
 ###############################################################################
 
