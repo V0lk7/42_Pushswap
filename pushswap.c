@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 17:29:59 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/13 17:08:20 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@ static void 	ft_display(t_stack *stack, size_t size, char c)
 {
 	size_t	i = 0;
 
-	printf("stack %c = ", c);
+	printf("stack %c :\n", c);
+	printf("stack = ");
 	while (i < size)
 	{
 		printf("%i|", stack->tab[i]);
+		i++;
+	}
+	printf("\nindex = ");
+	i = 0;
+	while (i < size)
+	{
+		printf("%zu|", i);
 		i++;
 	}
 	printf("\n");
@@ -29,21 +37,19 @@ static void	ft_move(t_stack *stack_a, t_stack *stack_b, size_t size)
 {
 	size_t	i;
 
-	i = size;	
-	printf("Before push & swap\n");
+	i = size;
+	printf("Before pushb\n");
+	ft_display(stack_a, size, 'a');
+	printf("After pushb\n");
+	ft_push(stack_a, stack_b, 'b');
 	ft_display(stack_a, size, 'a');
 	ft_display(stack_b, size, 'b');
-	printf("After push\n");
-	while (i > 0)
-	{
-		ft_push(stack_a, stack_b);
-		i--;
-		ft_display(stack_b, size, 'b');
-	}
-	printf("\n");
+	printf("After pushai\n");
+	ft_push(stack_b, stack_a, 'a');
+	ft_display(stack_a, size, 'a');
 	ft_display(stack_b, size, 'b');
-	ft_rev_rotate(stack_b);
-	ft_display(stack_b, size, 'b');
+
+	return ;
 }
 
 int	main(int argc, char **argv)

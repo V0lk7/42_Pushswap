@@ -6,57 +6,113 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:26:49 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 17:29:11 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/13 17:10:26 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_swap(t_stack *stack)
+void	ft_adjust(t_stack *stack, char c)
 {
-	int	tmp;
-	if (stack->max <= 1)
-		return ;
-	tmp = stack->tab[stack->max - 1];
-	stack->tab[stack->max - 1] = stack->tab[stack->max - 2];
-	stack->tab[stack->max - 2] = tmp;
-}
-
-void	ft_push(t_stack *give, t_stack *take)
-{
-	if (give->max <= 0)
-		return ;
-	take->tab[take->max] = give->tab[give->max - 1];
-	give->max--;
-	take->max++;
-}
-
-void	ft_rotate(t_stack *stack)
-{
-	int		tmp;
 	size_t	i;
+	int		tmp;
 
-	tmp = stack->tab[stack->max - 1];
-	i = stack->max - 1;
-	while (i > 0)
+	i = 0;
+	if (c == 'u')
+	{
+		tmp = stack->tab[0];
+		while (i < stack->max)
+		{
+			stack->tab[i] = stack->tab[i + 1];
+			i++;
+		}
+		stack->tab[i] = tmp;
+		return ;
+	}
+	i = stack->max;
+	tmp = stack->tab[i];
+	while(i > 0)
 	{
 		stack->tab[i] = stack->tab[i - 1];
 		i--;
 	}
 	stack->tab[i] = tmp;
+	return ;
 }
 
-void	ft_rev_rotate(t_stack *stack)
+void	ft_swap(t_stack *stack, char c)
+{
+	int		tmp;
+
+	if (stack->max <= 1)
+		return ;
+	tmp = stack->tab[stack->max - 1];
+	stack->tab[stack->max - 1] = stack->tab[stack->max - 2];
+	stack->tab[stack->max - 2] = tmp;
+	if (c == 'a')
+		ft_printf("sa\n");
+	else if (c == 'b')
+		ft_printf("sb\n");
+	return ;
+}
+
+void	ft_push(t_stack *give, t_stack *take, char c)
+{
+	if (give->max <= 0)
+		return ;
+	if (take->max > 0)
+		ft_adjust(take, 'd');
+	take->tab[0] = give->tab[0];
+	ft_adjust(give, 'u');
+	take->max++;
+	give->max--;
+	if (c == 'a')
+		ft_printf("pa\n");
+	else if (c == 'b')
+		ft_printf("pb\n");
+	return ;
+}
+
+void	ft_rotate(t_stack *stack, char c)
 {
 	int		tmp;
 	size_t	i;
 
 	i = 0;
+	if (stack->max <= 0)
+		return ;
 	tmp = stack->tab[0];
-	while(i < stack->max - 1)
+	while (i < stack->max)
 	{
 		stack->tab[i] = stack->tab[i + 1];
 		i++;
 	}
 	stack->tab[i] = tmp;
+	if (c == 'a')
+		ft_printf("ra\n");
+	else if (c == 'b')
+		ft_printf("rb\n");
+	return ;
+}
+
+void	ft_rev_rotate(t_stack *stack, char c)
+{
+	int		tmp;
+	size_t	i;
+
+	if (stack->max <= 0)
+		return ;
+	i = stack->max;
+	tmp = stack->tab[i];
+	while(i > 0)
+	{
+		stack->tab[i] = stack->tab[i - 1];
+		i--;
+	}
+	stack->tab[i] = tmp;
+	if (c == 'a')
+		ft_printf("rra\n");
+	else if (c == 'b')
+		ft_printf("rrb\n");
+	return ;
 }
