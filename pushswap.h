@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/13 15:36:30 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/16 14:39:50 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 }	t_stack;
 
 /*	in pushswap.c		*/
-
+void		ft_display(t_stack *stack, size_t size, char c);
 /*	in ps_flat.c		*/
 char		*ft_set_space(char *str);
 char		**ft_prep_list(char **argv);
@@ -47,13 +47,19 @@ t_bool		set_stack_a(t_stack *stack, char **list, size_t size);
 t_stack		*ft_init_stack(size_t size, char **list);
 /*	in ps_stats.c		*/
 t_bool		ft_is_sorted(int *tab, size_t size);
+size_t		ft_average(int *tab, size_t len);
 /*	in ps_move .c		*/
 void		ft_swap(t_stack *stack, char c);
 void		ft_push(t_stack *give, t_stack *take, char c);
 void		ft_rotate(t_stack *stack, char c);
 void		ft_rev_rotate(t_stack *stack, char c);
 /*	in ps_alg_spe.c		*/
-void	ft_algo_three(t_stack *stk, char c);
-size_t	ft_find_min(int *tab, size_t max);
-void	ft_algo_four(t_stack *stk_a, t_stack *stk_b);
+//void	ft_algo_three(t_stack *stk, char c);
+size_t		ft_find_min(int *tab, size_t max);
+//void	ft_algo_four(t_stack *stk_a, t_stack *stk_b);
+/*	in ps_algorithm.c	*/
+void		ft_algorithm(t_stack *stk_a, t_stack *stk_b);
+/*	in ps_normalise.c	*/
+size_t		ft_find_max(int *tab, size_t len);
+t_stack		*ft_normalize(t_stack *stk_a);
 #endif

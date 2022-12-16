@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/13 11:09:25 by jduval           ###   ########.fr        #
+#    Updated: 2022/12/16 14:28:05 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS = 	pushswap.c		ps_utils.c \
 		ps_flat.c 		ps_parse.c \
 		ps_set_stack.c 	ps_stats.c \
 		ps_move.c		ps_alg_spe.c \
+		ps_algorithm.c  ps_normalize.c \
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -45,7 +46,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@${MAKE} -C libft/
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $^ libft/libft.a -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) libft/libft.a -o $@
 	$(info CREATED $@)
 
 $(BUILD_DIR)/%.o : %.c
@@ -53,7 +54,7 @@ $(BUILD_DIR)/%.o : %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
 
-
+-include $(DEPS)
 
 ###############################################################################
 

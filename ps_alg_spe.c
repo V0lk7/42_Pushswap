@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 09:23:05 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/13 15:45:37 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/15 07:25:33 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_find_min(int *tab, size_t max)
 		i++;
 	return (i);
 }
-
+/*
 void	ft_algo_three(t_stack *stk, char c)
 {
 	int	i;
@@ -86,4 +86,4 @@ void	ft_algo_four(t_stack *stk_a, t_stack *stk_b)
 		ft_algo_three(stk_a, 'a');
 		ft_push(stk_b, stk_a, 'a');
 	}
-}
+}*/
