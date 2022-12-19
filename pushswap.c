@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/16 14:41:29 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/19 16:05:29 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,34 @@ void 	ft_display(t_stack *stack, size_t size, char c)
 	printf("\n");
 	return ;
 }
-/*
-static void	ft_move(t_stack *stack_a, t_stack *stack_b, size_t size)
+
+static void	ft_move(t_stack *stacka, t_stack *stackb)
 {
 	size_t	i;
+	size_t	len = stacka->max / 2;
 
-	i = size;
-
-	return ;
+	i = 0;
+	while (i < len)	
+	{
+		ft_push(stacka, stackb, 'b');
+		i++;
+	}
+	ft_display(stacka, stacka->max, 'a');
+	ft_display(stackb, stackb->max, 'b');
+	i = ft_count_nbr(stackb->tab, stackb->max, stackb->tab[ft_find_max(stackb->tab, stackb->max)]);
+	printf("count_nbr = %zu\n", i);
+	i = ft_count_position(stacka->tab, stacka->max, 
+		stackb->tab[ft_find_max(stackb->tab, stackb->max)]);
+	printf("%i\n", stackb->tab[ft_find_max(stackb->tab, stackb->max)]);	
+	printf("count_position  = %zu", i);
 }
-*/
+
 int	main(int argc, char **argv)
 {
 	char	**list;
 	size_t	size;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	size_t		average;
 
 	ft_pre_check(argc, argv);
 	list = ft_prep_list(argv);
@@ -53,11 +64,9 @@ int	main(int argc, char **argv)
 	}
 	stack_a = ft_init_stack(size, list);
 	stack_b = ft_init_stack(size, NULL);
-	ft_display(stack_a, size, 'a');
 	stack_a = ft_normalize(stack_a);
-	average = ft_average(stack_a->tab, stack_a->max);
-	printf("average = %zu\n", average);
 	ft_display(stack_a, size, 'a');
+	ft_move(stack_a, stack_b);
 	ft_free(list, NULL, stack_a);
 	ft_free(NULL, NULL, stack_b);
 	return (0);

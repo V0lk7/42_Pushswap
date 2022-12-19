@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/16 14:39:50 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/19 14:36:20 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,17 @@ t_bool		set_stack_a(t_stack *stack, char **list, size_t size);
 t_stack		*ft_init_stack(size_t size, char **list);
 /*	in ps_stats.c		*/
 t_bool		ft_is_sorted(int *tab, size_t size);
-size_t		ft_average(int *tab, size_t len);
-/*	in ps_move .c		*/
+size_t		ft_count_nbr(int *tab, size_t len, int nbr);
+size_t		ft_count_position(int *tab, size_t len, int nbr);
+/*	in ps_move.c		*/
 void		ft_swap(t_stack *stack, char c);
 void		ft_push(t_stack *give, t_stack *take, char c);
 void		ft_rotate(t_stack *stack, char c);
 void		ft_rev_rotate(t_stack *stack, char c);
+/*	in ps_move2.c		*/
+void		ft_ss(t_stack *stack_a, t_stack *stack_b);
+void		ft_rr(t_stack *stack_a, t_stack *stack_b);
+void		ft_rrr(t_stack *stack_a, t_stack *stack_b);
 /*	in ps_alg_spe.c		*/
 //void	ft_algo_three(t_stack *stk, char c);
 size_t		ft_find_min(int *tab, size_t max);
