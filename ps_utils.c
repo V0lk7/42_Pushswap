@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/12 09:57:26 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/21 15:01:00 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,36 @@ char	*ft_strjoin_free(char *s1, char const *s2)
 	ft_strlcpy(&new_s[size_alloc], s2, size_srcs);
 	free (s1);
 	return (new_s);
+}
+
+size_t	ft_find_max(int *tab, size_t len)
+{
+	size_t	i;
+	int		tmp;
+
+	i = 0;
+	tmp = i;
+	while (i < len - 1)
+	{
+		if (tab[tmp] < tab[i + 1] && i + 1 < len)
+			tmp = i + 1;
+		i++;
+	}
+	return (tmp);
+}
+
+size_t	ft_find_min(int *tab, size_t len)
+{
+	size_t	i;
+	size_t	tmp;
+
+	i = 0;
+	tmp = i;
+	while (i < len - 1)
+	{
+		if (tab[tmp] > tab[i + 1])
+			tmp = i + 1;
+		i++;
+	}
+	return (tmp);
 }

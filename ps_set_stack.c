@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:08:16 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/13 15:36:13 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/20 13:59:13 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,24 @@ t_stack	*ft_init_stack(size_t size, char **list)
 		ft_errors();
 	}
 	return (stack);
+}
+
+t_stack	*ft_normalize(t_stack *stk_a)
+{
+	t_stack	*stk_n;
+	int		len;
+	int		index;
+
+	stk_n = ft_init_stack(stk_a->max, NULL);
+	len = stk_a->max - 1;
+	while (len >= 0)
+	{
+		index = ft_find_max(stk_a->tab, stk_a->max);
+		stk_a->tab[index] = -2147483648;
+		stk_n->tab[index] = len;
+		len--;
+	}
+	stk_n->max = stk_a->max;
+	ft_free(NULL, NULL, stk_a);
+	return (stk_n);
 }
