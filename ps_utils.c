@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/21 15:01:00 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/22 13:05:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ size_t	ft_find_max(int *tab, size_t len)
 
 	i = 0;
 	tmp = i;
+	if (len <= 0)
+		return (0);
 	while (i < len - 1)
 	{
 		if (tab[tmp] < tab[i + 1] && i + 1 < len)
@@ -86,6 +88,8 @@ size_t	ft_find_min(int *tab, size_t len)
 
 	i = 0;
 	tmp = i;
+	if (len <= 0)
+		return (0);
 	while (i < len - 1)
 	{
 		if (tab[tmp] > tab[i + 1])

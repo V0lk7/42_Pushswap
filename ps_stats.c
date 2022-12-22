@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:29:22 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/21 15:10:20 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/22 15:31:55 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t	ft_count_sa(t_stack *stack, int value, t_bool flag)
 		i++;
 	}
 	if (flag == TRUE)
-		return (index + 1);	
+		return (index);	
 	else 
 		return (stack->max - (index + 1));
 }
@@ -83,12 +83,19 @@ size_t	ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag)
 	size_t	index;
 
 	ra = ft_count_sa(stk_a, stk_b->tab[i], TRUE);
+	printf("ra = %zu| ", ra);
 	rb = ft_count_sb(stk_b->max, i, TRUE);
+	printf("rb = %zu| ", rb);
 	rra = ft_count_sa(stk_a, stk_b->tab[i], FALSE);
+	printf("rra = %zu| ", rra);
 	res[0] = ft_abs(ra, rb) + 1;
 	res[1] = ft_abs(rra, ft_count_sb(stk_b->max, i, FALSE)) + 1;
 	res[2] = ra + ft_count_sb(stk_b->max, i, FALSE) + 1;
 	res[3] = rb + rra + 1;
+	printf("\nnbr count in res for %i\n", stk_b->tab[i]);
+	for (int i = 0; i < 4; i++)
+		printf("%i|", res[i]);
+	printf("\n");
 	index = ft_find_min(res, 4);
 	if (flag == TRUE)
 		return (index);

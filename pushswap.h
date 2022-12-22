@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/21 15:09:41 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:10:53 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,11 @@ void		ft_rrr(t_stack *stack_a, t_stack *stack_b);
 
 /*	in ps_algorithm.c	*/
 void		ft_algorithm(t_stack *stk_a, t_stack *stk_b);
-size_t		ft_chosen_one(t_stack *stk_a, t_stack *stk_b);
+int			*ft_data(t_stack *stk_a, t_stack *stk_b);
+void		ft_put_count(int **data, t_stack *stk_a, t_stack *stk_b);
+/*	in ps_pathern.c		*/
+void		ft_pathern0(int **data, t_stack *stk_a, t_stack *stk_b);
+void		ft_pathern1(int **data, t_stack *stk_a, t_stack *stk_b);
+void		ft_pathern2(int **data, t_stack *stk_a, t_stack *stk_b);
+void		ft_pathern3(int **data, t_stack *stk_a, t_stack *stk_b);
 #endif

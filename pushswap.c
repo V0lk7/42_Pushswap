@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/21 15:09:26 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:13:27 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ static void	ft_move(t_stack *stacka, t_stack *stackb)
 	ft_display(stacka, stacka->max, 'a');
 	ft_display(stackb, stackb->max, 'b');
 	ft_algorithm(stacka, stackb);
-	ft_chosen_one(stacka, stackb);
 	ft_display(stacka, stacka->max, 'a');
 	ft_display(stackb, stackb->max, 'b');
-	
 }
 
 int	main(int argc, char **argv)
