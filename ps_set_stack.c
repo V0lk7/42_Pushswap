@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:08:16 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/20 13:59:13 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/23 16:48:11 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_bool	set_stack_a(t_stack *stack, char **list, size_t size)
 
 	stack->max = size;
 	flag = ft_add_data(stack->tab, list);
+	if (flag == FALSE)
+		return (flag);
 	flag = ft_duplicate(stack->tab, size);
 	return (flag);
 }

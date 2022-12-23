@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/22 14:11:10 by jduval           ###   ########.fr        #
+#    Updated: 2022/12/23 16:03:41 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = 	pushswap.c		ps_utils.c \
 		ps_set_stack.c 	ps_stats.c \
 		ps_move.c		ps_move2.c \
 		ps_algorithm.c  ps_pathern.c \
+		ps_utils2.c
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 

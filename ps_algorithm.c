@@ -6,12 +6,12 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:37 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/22 15:09:46 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/23 11:23:30 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
+/*
 int	*ft_data(t_stack *stk_a, t_stack *stk_b)
 {
 	int		results[stk_b->max];
@@ -63,8 +63,9 @@ void	ft_algorithm(t_stack *stk_a, t_stack *stk_b)
 {
 	int		*data;
 
-	while (stk_a->max > 1)
+	while (stk_a->max > 2)
 		ft_push(stk_a, stk_b, 'b');
+	ft_rotate(stk_a, 'a');
 	ft_display(stk_a, stk_a->max, 'a');
 	ft_display(stk_b, stk_b->max, 'b');
 	while (stk_b->max > 0)
@@ -86,4 +87,4 @@ void	ft_algorithm(t_stack *stk_a, t_stack *stk_b)
 		ft_push(stk_b, stk_a, 'b');
 		free (data);
 	}
-}
+}*/

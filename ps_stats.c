@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:29:22 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/22 15:31:55 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/23 16:03:16 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,70 @@ t_bool	ft_is_sorted(int *tab, size_t size)
 	}
 	return (TRUE);
 }
-
-size_t	ft_count_sa(t_stack *stack, int value, t_bool flag)
+/*
+size_t	ft_find_pos(t_stack *stack, int value, t_bool flag)
 {
 	size_t	i;
+	int		tab[stack->max];
 	int		tmp;
-	size_t	index;
 
-	index = 0;
 	i = 0;
-	tmp = value - stack->tab[i];
 	while (i < stack->max)
 	{
-		if ((value - stack->tab[i] > 0) && tmp > value - stack->tab[i])
-		{
-			index = i;
-			tmp = value - stack->tab[i];
-		}
+		tab[i] = value - stack->tab[i];
 		i++;
 	}
-	if (flag == TRUE)
-		return (index);	
-	else 
-		return (stack->max - (index + 1));
-}
-
+	tmp = ft_positive_min(tab, stack->max);
+	i = ft_negative_max(tab, stack->max);
+	if (i < 0)
+	{
+		if (tmp > 0 && flag == TRUE)
+			return (tmp + 1);
+		else if (tmp > 0 && flag == FALSE)
+			return (stack->max - (tmp + 1));
+		else if (tmp == 0 && flag == TRUE)
+			return (1);
+		else
+			return (stack->max);
+	}
+	else if (tmp < 0)
+	{
+		if (i > 0 && flag == TRUE)
+			return (i + 1);
+		else if (i > 0 && flag == FALSE)
+			return (stack->max - (i + 1));
+		else if (i == 0 && flag == TRUE)
+			return (1);
+		else
+			return (stack->max);
+	}
+	else
+	{
+		if (tmp > i * (-1))
+		{
+			if (i > 0 && flag == TRUE)
+				return (i + 1);
+			else if (i > 0 && flag == FALSE)
+				return (stack->max - (i + 1));
+			else if (i == 0 && flag == TRUE)
+				return (1);
+			else
+				return (stack->max);
+		}
+		else
+		{
+			if (tmp > 0 && flag == TRUE)
+				return (tmp + 1);
+			else if (tmp > 0 && flag == FALSE)
+				return (stack->max - (tmp + 1));
+			else if (tmp == 0 && flag == TRUE)
+				return (1);
+			else
+				return (stack->max);
+		}
+	}
+}*/
+/*
 size_t	ft_count_sb(size_t len, int index, t_bool flag)
 {
 	if (flag == TRUE)
@@ -82,6 +121,7 @@ size_t	ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag)
 	size_t	rra;
 	size_t	index;
 
+	printf("\nnbr count in res for %i\n", stk_b->tab[i]);
 	ra = ft_count_sa(stk_a, stk_b->tab[i], TRUE);
 	printf("ra = %zu| ", ra);
 	rb = ft_count_sb(stk_b->max, i, TRUE);
@@ -93,11 +133,11 @@ size_t	ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag)
 	res[2] = ra + ft_count_sb(stk_b->max, i, FALSE) + 1;
 	res[3] = rb + rra + 1;
 	printf("\nnbr count in res for %i\n", stk_b->tab[i]);
-	for (int i = 0; i < 4; i++)
-		printf("%i|", res[i]);
-	printf("\n");
+	//for (int i = 0; i < 4; i++)
+	//	printf("%i|", res[i]);
+	//printf("\n");
 	index = ft_find_min(res, 4);
 	if (flag == TRUE)
 		return (index);
 	return (res[index]);
-}
+}*/
