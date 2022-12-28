@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:08:16 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/23 16:48:11 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:00:45 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	ft_add_data(int	*tab, char **list)
 	while (list[i])
 	{
 		output = ft_atoi(list[i]);
-		if (ft_overflow(list[i], output) == 0)
+		if (ft_overflow(list[i], output) == FALSE)
 			return (FALSE);
 		tab[i] = output;
 		i++;
@@ -42,7 +42,7 @@ void	ft_add_zero(int *tab, size_t size)
 	return ;
 }
 
-t_bool	set_stack_a(t_stack *stack, char **list, size_t size)
+t_bool	ft_set_a(t_stack *stack, char **list, size_t size)
 {
 	t_bool	flag;
 
@@ -68,7 +68,7 @@ t_stack	*ft_init_stack(size_t size, char **list)
 		ft_errors();
 	}
 	if (list)
-		flag = set_stack_a(stack, list, size);
+		flag = ft_set_a(stack, list, size);
 	else
 	{
 		stack->max = 0;
@@ -80,24 +80,4 @@ t_stack	*ft_init_stack(size_t size, char **list)
 		ft_errors();
 	}
 	return (stack);
-}
-
-t_stack	*ft_normalize(t_stack *stk_a)
-{
-	t_stack	*stk_n;
-	int		len;
-	int		index;
-
-	stk_n = ft_init_stack(stk_a->max, NULL);
-	len = stk_a->max - 1;
-	while (len >= 0)
-	{
-		index = ft_find_max(stk_a->tab, stk_a->max);
-		stk_a->tab[index] = -2147483648;
-		stk_n->tab[index] = len;
-		len--;
-	}
-	stk_n->max = stk_a->max;
-	ft_free(NULL, NULL, stk_a);
-	return (stk_n);
 }

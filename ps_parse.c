@@ -6,13 +6,13 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:42:35 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/23 16:48:25 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:31:24 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-size_t	size_list(char **list)
+size_t	ft_size_list(char **list)
 {
 	int	size;
 
@@ -22,15 +22,13 @@ size_t	size_list(char **list)
 	return (size);
 }
 
-void	ft_pre_check(int argc, char **argv)
+t_bool	ft_pre_check(char **argv)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	i = 1;
-	if (argc < 2)
-		exit(0);
 	while (argv[i])
 	{
 		j = 0;
@@ -39,18 +37,19 @@ void	ft_pre_check(int argc, char **argv)
 		{
 			if (ft_isdigit(argv[i][j]) == 0 && argv[i][j] != '-'
 				&& argv[i][j] != '+' && argv[i][j] != ' ')
-				ft_errors();
+				return (FALSE);
 			if (ft_isdigit(argv[i][j]) == 1)
 				k++;
 			j++;
 		}
 		if (k == 0)
-			ft_errors();
+			return (FALSE);
 		i++;
 	}
+	return (TRUE);
 }
 
-int	ft_check(char *str)
+t_bool	ft_check(char *str)
 {
 	size_t	i;
 
@@ -59,12 +58,12 @@ int	ft_check(char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (i != ft_strlen(str))
-		return (1);
-	return (0);
+	if (str[i] == '\0')
+		return (TRUE);
+	return (FALSE);
 }
 
-int	ft_overflow(char *list, int output)
+t_bool	ft_overflow(char *list, int output)
 {
 	size_t	i;
 
@@ -72,16 +71,16 @@ int	ft_overflow(char *list, int output)
 	if (output == -1)
 	{
 		if (ft_strlen(list) != 2)
-			return (0);
+			return (FALSE);
 	}
 	if (output == 0)
 	{
 		while (list[i] == '0')
 			i++;
 		if (list[i] != '\0')
-			return (0);
+			return (FALSE);
 	}
-	return (1);
+	return (TRUE);
 }
 
 t_bool	ft_duplicate(int *tab, size_t size)

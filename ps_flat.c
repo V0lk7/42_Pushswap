@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 08:53:14 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/09 13:02:14 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:08:22 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,8 @@ char	**ft_prep_list(char **argv)
 		i++;
 	}
 	list = ft_split(str, ' ');
-	i = 0;
-	while (list[i])
-	{
-		if (ft_check(list[i]) == 1)
-		{
-			ft_free(list, NULL, NULL);
-			ft_errors();
-		}
-		i++;
-	}
 	free (str);
+	if (list == NULL)
+		ft_errors();
 	return (list);
 }

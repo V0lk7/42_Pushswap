@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/23 14:21:56 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/28 15:57:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include "libft.h"
 # include "printf.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
 
 typedef struct s_stack
 {
@@ -31,32 +28,32 @@ void		ft_display(t_stack *stack, size_t size, char c);
 char		*ft_set_space(char *str);
 char		**ft_prep_list(char **argv);
 /*	in ps_parse.c		*/
-size_t		size_list(char **list);
-void		ft_pre_check(int argc, char **argv);
-int			ft_check(char *str);
-int			ft_overflow(char *list, int output);
+size_t		ft_size_list(char **list);
+t_bool		ft_pre_check(char **argv);
+t_bool		ft_check(char *str);
+t_bool		ft_overflow(char *list, int output);
 t_bool		ft_duplicate(int *tab, size_t size);
 /*	in ps_utils.c		*/
 void		ft_errors(void);
 void		ft_free(char **tab, char *str, t_stack *stack);
 char		*ft_strjoin_free(char *s1, char const *s2);
-size_t		ft_find_max(int *tab, size_t len);
-size_t		ft_find_min(int *tab, size_t max);
-/*	in ps_utils2.c		*/
-int			ft_positive_min(int *tab, size_t size);
-int			ft_negative_max(int *tab, size_t size);
+/*	in ps_data_utils.c		*/
+size_t		ft_count_sta(t_stack *stack, size_t i, int value, t_bool flag);
+size_t		ft_count_stb(size_t len, int index, t_bool flag);
+size_t		ft_find_pos(t_stack *stack, int value, t_bool flag);
+int			ft_abs(int a);
+size_t		ft_merge(size_t a, size_t b);
 /*	 in ps_set_stack.c	*/
 t_bool		ft_add_data(int *tab, char **list);
 void		ft_add_zero(int *tab, size_t size);
-t_bool		set_stack_a(t_stack *stack, char **list, size_t size);
+t_bool		ft_set_a(t_stack *stack, char **list, size_t size);
 t_stack		*ft_init_stack(size_t size, char **list);
-t_stack		*ft_normalize(t_stack *stk_a);
-/*	in ps_stats.c		*/
+/*	in ps_data.c		*/
 t_bool		ft_is_sorted(int *tab, size_t size);
-size_t		ft_find_pos(t_stack *stack, int value, t_bool flag);
-size_t		ft_count_sb(size_t len, int index, t_bool flag);
-size_t		ft_abs(size_t a, size_t b);
+size_t		ft_find_min(int *tab, size_t max);
 size_t		ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag);
+int			*ft_data(t_stack *stk_a, t_stack *stk_b);
+void		ft_put_count(int **data, t_stack *stk_a, t_stack *stk_b);
 /*	in ps_move.c		*/
 void		ft_swap(t_stack *stack, char c);
 void		ft_push(t_stack *give, t_stack *take, char c);
@@ -66,14 +63,9 @@ void		ft_rev_rotate(t_stack *stack, char c);
 void		ft_ss(t_stack *stack_a, t_stack *stack_b);
 void		ft_rr(t_stack *stack_a, t_stack *stack_b);
 void		ft_rrr(t_stack *stack_a, t_stack *stack_b);
-/*	in ps_alg_spe.c		*/
-//void	ft_algo_three(t_stack *stk, char c);
-//void	ft_algo_four(t_stack *stk_a, t_stack *stk_b);
-
 /*	in ps_algorithm.c	*/
 void		ft_algorithm(t_stack *stk_a, t_stack *stk_b);
 int			*ft_data(t_stack *stk_a, t_stack *stk_b);
-void		ft_put_count(int **data, t_stack *stk_a, t_stack *stk_b);
 /*	in ps_pathern.c		*/
 void		ft_pathern0(int **data, t_stack *stk_a, t_stack *stk_b);
 void		ft_pathern1(int **data, t_stack *stk_a, t_stack *stk_b);
