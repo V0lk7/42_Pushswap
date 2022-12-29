@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 09:27:09 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:29:31 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSHSWAP_H
 
 # include "libft.h"
+# include "printf.h"
 
 typedef struct s_stack
 {
@@ -29,8 +30,6 @@ typedef struct s_data
 	size_t	move_b;
 }	t_data;
 
-/*	in pushswap.c		*/
-void		ft_display(t_stack *stack, size_t size, char c);
 /*	in ps_flat.c		*/
 char		*ft_set_space(char *str);
 char		**ft_prep_list(char **argv);

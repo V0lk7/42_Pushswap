@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 09:25:08 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:30:00 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int argc, char **argv)
 	stack_b = ft_init_stack(size, NULL);
 	ft_free(list, NULL, NULL);
 	ft_algorithm(stack_a, stack_b);
-	ft_display(stack_a, stack_a->max, 'a');
 	ft_free(NULL, NULL, stack_a);
 	ft_free(NULL, NULL, stack_b);
 	return (0);
