@@ -6,19 +6,23 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/28 16:02:32 by jduval           ###   ########.fr        #
+#    Updated: 2022/12/29 13:50:32 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ###############################################################################
 
+ifdef BONUS
+NAME = checker
+else
 NAME = push_swap
+endif
 
 MAKEFLAGS += --no-print-directory
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -ggdb3
+CFLAGS = -Wall -Werror -Wextra
 
 CPPFLAGS = -MMD -MP -I $(INCLUDE)
 
@@ -33,9 +37,15 @@ BUILD_DIR = .build
 SRCS = 	pushswap.c		ps_utils.c	\
 		ps_parse.c		ps_flat.c	\
 		ps_set_stack.c 	ps_data.c \
-		ps_move.c		ps_move2.c \
+		ps_moves.c		ps_moves2.c \
 		ps_algorithm.c  ps_pathern.c \
 		ps_data_utils.c
+
+SRCS_BONUS = 
+
+ifdef BONUS
+SRCS += $(SRCS_BONUS)
+endif
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -55,7 +65,10 @@ $(BUILD_DIR)/%.o : %.c
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
 
--include $(DEPS)
+-include $(DEPS) 
+
+bonus: 
+	$(MAKE) BONUS=1 all
 
 ###############################################################################
 
