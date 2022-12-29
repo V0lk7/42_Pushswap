@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_stat_utils.c                                    :+:      :+:    :+:   */
+/*   ps_data_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 14:22:09 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 15:49:58 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:23:19 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	ft_count_sta(t_stack *stack, size_t i, int value, t_bool flag)
 		return (i);
 	else if (flag == FALSE && i > 0 && tmp > 0)
 		return (stack->max - (i + 1));
-	else 
+	else
 		return (stack->max - i);
 }
 
@@ -40,8 +40,8 @@ size_t	ft_count_stb(size_t len, int index, t_bool flag)
 	if (index == 0)
 		return (0);
 	if (flag == TRUE)
-		return (index);	
-	else 
+		return (index);
+	else
 		return (len - index);
 }
 
@@ -49,8 +49,8 @@ size_t	ft_find_pos(t_stack *stack, int value, t_bool flag)
 {
 	size_t	i;
 	size_t	j;
-	int	tmp;
-		
+	int		tmp;
+
 	i = 0;
 	j = 0;
 	tmp = ft_abs(value - stack->tab[i]);

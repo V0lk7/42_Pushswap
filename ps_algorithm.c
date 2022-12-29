@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:56:37 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 17:13:41 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:13:13 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	ft_dispatch(t_stack *stk_a, t_stack *stk_b)
 
 void	ft_algorithm(t_stack *stk_a, t_stack *stk_b)
 {
-	int		*data;
+	t_data	data;
 
 	ft_dispatch(stk_a, stk_b);
 	while (stk_a->max > 1)
@@ -93,19 +93,18 @@ void	ft_algorithm(t_stack *stk_a, t_stack *stk_b)
 	while (stk_b->max > 0)
 	{
 		data = ft_data(stk_a, stk_b);
-		while (data[2] > 0 || data[3] > 0)
+		while (data.move_a > 0 || data.move_b > 0)
 		{
-			if (data[1] == 0)
-				ft_pathern0(&data, stk_a, stk_b);
-			else if (data[1] == 1)
-				ft_pathern1(&data, stk_a, stk_b);
-			else if (data[1] == 2)
-				ft_pathern2(&data, stk_a, stk_b);
-			else if (data[1] == 3)
-				ft_pathern3(&data, stk_a, stk_b);
+			if (data.pathern == 0)
+				data = ft_pathern0(data, stk_a, stk_b);
+			else if (data.pathern == 1)
+				data = ft_pathern1(data, stk_a, stk_b);
+			else if (data.pathern == 2)
+				data = ft_pathern2(data, stk_a, stk_b);
+			else if (data.pathern == 3)
+				data = ft_pathern3(data, stk_a, stk_b);
 		}
 		ft_push(stk_b, stk_a, 'a');
-		free (data);
 	}
 	ft_order(stk_a);
 }

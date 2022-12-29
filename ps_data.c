@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:29:22 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 17:26:00 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:21:21 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,46 +67,54 @@ size_t	ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag)
 	return (res[res[4]]);
 }
 
-int	*ft_data(t_stack *stk_a, t_stack *stk_b)
+t_data	ft_data(t_stack *stk_a, t_stack *stk_b)
 {
-	int		results[stk_b->max];
-	int		*data;
+	t_data	data;
+	int		*results;
 	size_t	i;
 
 	i = 0;
-	data = malloc(sizeof(int) * 4);
+	results = malloc(sizeof(int) * stk_b->max);
+	if (results == NULL)
+	{
+		ft_free(NULL, NULL, stk_a);
+		ft_free(NULL, NULL, stk_b);
+		exit (0);
+	}
 	while (i < stk_b->max)
 	{
 		results[i] = ft_nbr_move(stk_a, stk_b, i, FALSE);
 		i++;
 	}
 	i = ft_find_min(results, stk_b->max);
-	data[0] = i;
-	data[1] = ft_nbr_move(stk_a, stk_b, i, TRUE);
-	ft_put_count(&data, stk_a, stk_b);
+	free(results);
+	data.index = i;
+	data.pathern = ft_nbr_move(stk_a, stk_b, i, TRUE);
+	data = ft_put_count(data, stk_a, stk_b);
 	return (data);
 }
 
-void	ft_put_count(int **data, t_stack *stk_a, t_stack *stk_b)
+t_data	ft_put_count(t_data data, t_stack *stk_a, t_stack *stk_b)
 {
-	if ((*data)[1] == 0)
+	if (data.pathern == 0)
 	{
-		(*data)[2] = ft_find_pos(stk_a, stk_b->tab[(*data)[0]], TRUE);
-		(*data)[3] = ft_count_stb(stk_b->max, (*data)[0], TRUE);
+		data.move_a = ft_find_pos(stk_a, stk_b->tab[data.index], TRUE);
+		data.move_b = ft_count_stb(stk_b->max, data.index, TRUE);
 	}
-	else if((*data)[1] == 1)
+	else if (data.pathern == 1)
 	{
-		(*data)[2] = ft_find_pos(stk_a, stk_b->tab[(*data)[0]], FALSE);
-		(*data)[3] = ft_count_stb(stk_b->max, (*data)[0], FALSE);
+		data.move_a = ft_find_pos(stk_a, stk_b->tab[data.index], FALSE);
+		data.move_b = ft_count_stb(stk_b->max, data.index, FALSE);
 	}
-	else if ((*data)[1] == 2)
+	else if (data.pathern == 2)
 	{
-		(*data)[2] = ft_find_pos(stk_a, stk_b->tab[(*data)[0]], TRUE);
-		(*data)[3] = ft_count_stb(stk_b->max, (*data)[0], FALSE);
+		data.move_a = ft_find_pos(stk_a, stk_b->tab[data.index], TRUE);
+		data.move_b = ft_count_stb(stk_b->max, data.index, FALSE);
 	}
-	else if ((*data)[1] == 3)
+	else if (data.pathern == 3)
 	{
-		(*data)[2] = ft_find_pos(stk_a, stk_b->tab[(*data)[0]], FALSE);
-		(*data)[3] = ft_count_stb(stk_b->max, (*data)[0], TRUE);
+		data.move_a = ft_find_pos(stk_a, stk_b->tab[data.index], FALSE);
+		data.move_b = ft_count_stb(stk_b->max, data.index, TRUE);
 	}
+	return (data);
 }

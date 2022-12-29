@@ -6,34 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 16:55:44 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:25:08 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-//#define DEBUG
-
-void 	ft_display(t_stack *stack, size_t size, char c)
-{
-#ifdef DEBUG
-#include <stdio.h>
-	size_t	i = 0;
-
-	printf("stack %c = ", c);
-	while (i < size)
-	{
-		printf("%i|", stack->tab[i]);
-		i++;
-	}
-	printf("\n");
-	return ;
-#else
-	(void) stack;
-	(void) size;
-	(void) c;
-#endif
-}
 
 static char	**ft_set_list(char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:26:31 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/19 14:42:18 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:23:45 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_rr(t_stack *stack_a, t_stack *stack_b)
 	ft_rotate(stack_a, 'n');
 	ft_rotate(stack_b, 'n');
 	ft_printf("rr\n");
-	return ;	
+	return ;
 }
 
 void	ft_rrr(t_stack *stack_a, t_stack *stack_b)

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:26:49 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 11:55:27 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:24:16 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_adjust(t_stack *stack, char c)
 	}
 	i = stack->max;
 	tmp = stack->tab[i];
-	while(i > 0)
+	while (i > 0)
 	{
 		stack->tab[i] = stack->tab[i - 1];
 		i--;
@@ -104,7 +104,7 @@ void	ft_rev_rotate(t_stack *stack, char c)
 		return ;
 	i = stack->max - 1;
 	tmp = stack->tab[stack->max - 1];
-	while(i > 0)
+	while (i > 0)
 	{
 		stack->tab[i] = stack->tab[i - 1];
 		i--;

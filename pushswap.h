@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/28 15:57:37 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/29 09:27:09 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 # define PUSHSWAP_H
 
 # include "libft.h"
-# include "printf.h"
 
 typedef struct s_stack
 {
 	int		*tab;
 	size_t	max;
 }	t_stack;
+
+typedef struct s_data
+{
+	size_t	index;
+	size_t	pathern;
+	size_t	move_a;
+	size_t	move_b;
+}	t_data;
 
 /*	in pushswap.c		*/
 void		ft_display(t_stack *stack, size_t size, char c);
@@ -52,8 +59,8 @@ t_stack		*ft_init_stack(size_t size, char **list);
 t_bool		ft_is_sorted(int *tab, size_t size);
 size_t		ft_find_min(int *tab, size_t max);
 size_t		ft_nbr_move(t_stack *stk_a, t_stack *stk_b, size_t i, t_bool flag);
-int			*ft_data(t_stack *stk_a, t_stack *stk_b);
-void		ft_put_count(int **data, t_stack *stk_a, t_stack *stk_b);
+t_data		ft_data(t_stack *stk_a, t_stack *stk_b);
+t_data		ft_put_count(t_data data, t_stack *stk_a, t_stack *stk_b);
 /*	in ps_move.c		*/
 void		ft_swap(t_stack *stack, char c);
 void		ft_push(t_stack *give, t_stack *take, char c);
@@ -65,10 +72,10 @@ void		ft_rr(t_stack *stack_a, t_stack *stack_b);
 void		ft_rrr(t_stack *stack_a, t_stack *stack_b);
 /*	in ps_algorithm.c	*/
 void		ft_algorithm(t_stack *stk_a, t_stack *stk_b);
-int			*ft_data(t_stack *stk_a, t_stack *stk_b);
 /*	in ps_pathern.c		*/
-void		ft_pathern0(int **data, t_stack *stk_a, t_stack *stk_b);
-void		ft_pathern1(int **data, t_stack *stk_a, t_stack *stk_b);
-void		ft_pathern2(int **data, t_stack *stk_a, t_stack *stk_b);
-void		ft_pathern3(int **data, t_stack *stk_a, t_stack *stk_b);
+t_data		ft_pathern0(t_data data, t_stack *stk_a, t_stack *stk_b);
+t_data		ft_pathern1(t_data data, t_stack *stk_a, t_stack *stk_b);
+t_data		ft_pathern2(t_data data, t_stack *stk_a, t_stack *stk_b);
+t_data		ft_pathern3(t_data data, t_stack *stk_a, t_stack *stk_b);
+
 #endif
