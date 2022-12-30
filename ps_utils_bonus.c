@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:47 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 13:54:04 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/30 16:43:30 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
 void	ft_errors(void)
 {
@@ -76,4 +76,19 @@ t_bool	ft_is_sorted(int *tab, size_t size)
 			return (FALSE);
 	}
 	return (TRUE);
+}
+
+int	ft_index_move(char **list, char *input)
+{
+	int		i;
+	size_t	size;
+
+	i = 0;
+	size = ft_strlen(list[i]);
+	while (ft_strncmp(input, list[i], size) != 0 && list[i])
+	{
+		i++;
+		size = ft_strlen(list[i]);
+	}
+	return (i);
 }

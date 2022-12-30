@@ -6,39 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 09:26:49 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 13:33:55 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/30 15:22:23 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-void	ft_adjust(t_stack *stack, char c)
-{
-	size_t	i;
-	int		tmp;
-
-	i = 0;
-	if (c == 'u')
-	{
-		tmp = stack->tab[0];
-		while (i < stack->max - 1)
-		{
-			stack->tab[i] = stack->tab[i + 1];
-			i++;
-		}
-		stack->tab[i] = tmp;
-		return ;
-	}
-	i = stack->max;
-	tmp = stack->tab[i];
-	while (i > 0)
-	{
-		stack->tab[i] = stack->tab[i - 1];
-		i--;
-	}
-	stack->tab[i] = tmp;
-	return ;
-}
 
 void	ft_swap(t_stack *stack, char c)
 {
@@ -61,9 +33,9 @@ void	ft_push(t_stack *give, t_stack *take, char c)
 	if (give->max <= 0)
 		return ;
 	if (take->max > 0)
-		ft_adjust(take, 'd');
+		ft_adjust_filled(take);
 	take->tab[0] = give->tab[0];
-	ft_adjust(give, 'u');
+	ft_adjust(give);
 	take->max = take->max + 1;
 	give->max = give->max - 1;
 	if (c == 'a')

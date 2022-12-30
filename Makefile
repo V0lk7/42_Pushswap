@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/29 13:50:32 by jduval           ###   ########.fr        #
+#    Updated: 2022/12/30 18:37:43 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,22 +32,30 @@ DIRDUP = mkdir -p $(@D)
 
 INCLUDE = libft/include/
 
-BUILD_DIR = .build
-
-SRCS = 	pushswap.c		ps_utils.c	\
-		ps_parse.c		ps_flat.c	\
-		ps_set_stack.c 	ps_data.c \
-		ps_moves.c		ps_moves2.c \
-		ps_algorithm.c  ps_pathern.c \
-		ps_data_utils.c
-
-SRCS_BONUS = 
-
 ifdef BONUS
-SRCS += $(SRCS_BONUS)
+BUILD_DIR = .build_bonus
+else
+BUILD_DIR = .build
 endif
 
+SRCS = 			pushswap.c \
+				ps_parse.c		ps_flat.c	\
+				ps_set_stack.c 	ps_data.c \
+				ps_moves.c		ps_double_moves.c \
+				ps_algorithm.c  ps_pathern.c \
+				ps_data_utils.c	ps_utils.c \
+
+SRCS_BONUS =	ft_checker.c 		ps_set_stack_bonus.c \
+				ps_flat_bonus.c		ps_parse_bonus.c \
+				ps_utils_bonus.c	ps_moves_a_bonus.c \
+				ps_moves_b_bonus.c	ps_double_moves_bonus.c \
+				ps_utils2_bonus.c \
+
+ifdef BONUS
+OBJS = $(SRCS_BONUS:%.c=$(BUILD_DIR)/%.o)
+else
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
+endif
 
 DEPS = ${OBJS:.o=.d}
 
@@ -69,12 +77,13 @@ $(BUILD_DIR)/%.o : %.c
 
 bonus: 
 	$(MAKE) BONUS=1 all
-
+.PHONY:bonus
 ###############################################################################
 
-clean: 
+clean:
 	@${MAKE} -C libft/ clean
 	@rm -rf $(OBJS) $(BUILD_DIR)
+
 .PHONY:clean
 
 fclean: clean 

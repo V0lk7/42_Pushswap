@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 17:04:15 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 13:38:00 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/30 12:52:59 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void		ft_swap(t_stack *stack, char c);
 void		ft_push(t_stack *give, t_stack *take, char c);
 void		ft_rotate(t_stack *stack, char c);
 void		ft_rev_rotate(t_stack *stack, char c);
-//			in ps_moves2.c
+//			in ps_double_moves.c
+void		ft_adjust(t_stack *stack);
+void		ft_adjust_filled(t_stack *stack);
 void		ft_ss(t_stack *stack_a, t_stack *stack_b);
 void		ft_rr(t_stack *stack_a, t_stack *stack_b);
 void		ft_rrr(t_stack *stack_a, t_stack *stack_b);

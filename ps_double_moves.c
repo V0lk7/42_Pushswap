@@ -1,16 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_move2.c                                         :+:      :+:    :+:   */
+/*   ps_moves2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:26:31 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/29 09:23:45 by jduval           ###   ########.fr       */
+/*   Updated: 2022/12/30 12:51:32 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	ft_adjust(t_stack *stack)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < stack->max - 1)
+	{
+		stack->tab[i] = stack->tab[i + 1];
+		i++;
+	}
+}
+
+void	ft_adjust_filled(t_stack *stack)
+{
+	size_t	i;
+
+	i = stack->max;
+	while (i > 0)
+	{
+		stack->tab[i] = stack->tab[i - 1];
+		i--;
+	}
+}
 
 void	ft_ss(t_stack *stack_a, t_stack *stack_b)
 {
