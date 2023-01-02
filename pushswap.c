@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 12:30:45 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/02 10:12:02 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/02 10:33:50 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	**ft_set_list(int argc, char **argv)
 	int		i;
 
 	i = 0;
-	if (argc < 0)
+	if (argc < 2)
 		exit (0);
 	if (ft_pre_check(argv) == FALSE)
 		ft_errors();
