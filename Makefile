@@ -6,7 +6,7 @@
 #    By: jduval <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 13:18:12 by jduval            #+#    #+#              #
-#    Updated: 2022/12/30 18:37:43 by jduval           ###   ########.fr        #
+#    Updated: 2023/01/02 08:19:37 by jduval           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,13 +82,12 @@ bonus:
 
 clean:
 	@${MAKE} -C libft/ clean
-	@rm -rf $(OBJS) $(BUILD_DIR)
-
+	rm -rf .build .build_bonus
 .PHONY:clean
 
 fclean: clean 
 	@${MAKE} -C libft/ fclean
-	@rm -f $(NAME)
+	rm -f $(NAME) checker
 .PHONY: fclean
 
 re: fclean all

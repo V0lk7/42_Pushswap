@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:17:50 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/30 18:29:30 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/02 09:56:13 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_stack
 	size_t	max;
 }	t_stack;
 
-typedef void t_movements(t_stack *stack_a, t_stack *stack_b);
+typedef void	t_movements(t_stack *stack_a, t_stack *stack_b);
 
 //			In ps_flat_bonus.c
 char		*ft_set_space(char *str);
@@ -61,5 +61,5 @@ void		ft_rr(t_stack *stack_a, t_stack *stack_b);
 void		ft_rrr(t_stack *stack_a, t_stack *stack_b);
 //			In checker_utils2_bonus.c
 void		ft_init_ftab(t_movements **functions);
-
+void		ft_answers(t_stack *stk_a, t_stack *stk_b, int answer);
 #endif

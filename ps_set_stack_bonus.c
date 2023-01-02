@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 16:05:50 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/30 16:06:52 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/02 09:58:10 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,7 @@ t_stack	*ft_init_stack(size_t size, char **list)
 	stack = malloc(sizeof(t_stack));
 	stack->tab = malloc(sizeof(int) * size);
 	if (stack->tab == NULL || stack == NULL)
-	{
-		ft_free(list, NULL, stack);
-		ft_errors();
-	}
+		return (NULL);
 	if (list)
 		flag = ft_set_a(stack, list, size);
 	else

@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:56:59 by jduval            #+#    #+#             */
-/*   Updated: 2022/12/30 18:30:15 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/02 10:05:37 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,13 @@ static t_stack	*ft_set(int argc, char **argv)
 		exit (0);
 	list = ft_set_list(argv);
 	stack = ft_init_stack(ft_size_list(list), list);
+	if (stack == NULL)
+	{
+		ft_free(list, NULL, NULL);
+		ft_errors();
+	}
 	ft_free(list, NULL, NULL);
 	return (stack);
-}
-
-static void	ft_useless_args(t_stack *stack_a, t_stack *stack_b, char *str)
-{
-	t_bool	flag;
-
-	flag = ft_is_sorted(stack_a->tab, stack_a->max);
-	if (flag == TRUE && str != NULL)
-	{
-		ft_printf("KO\n");
-		ft_free(NULL, NULL, stack_a);
-		ft_free(NULL, NULL, stack_b);
-		exit (0);
-	}
 }
 
 static t_bool	ft_do_move(t_stack *stk_a, t_stack *stk_b, char *input)
@@ -63,48 +54,72 @@ static t_bool	ft_do_move(t_stack *stk_a, t_stack *stk_b, char *input)
 	char		**movements;
 	char		*str;
 	int			index;
+	t_bool		flag;
 	t_movements	*functions[11];
 
+	flag = TRUE;
 	ft_init_ftab(functions);
 	str = "sa\n pa\n ra\n rra\n sb\n pb\n rb\n rrb\n ss\n rr\n rrr\n";
 	movements = ft_split(str, ' ');
 	if (movements == NULL)
-		return (FALSE);
-	index = ft_index_move(movements, input);
-	if (index > 10)
 	{
-		ft_free(movements, NULL, NULL);
-		return (FALSE);
+		ft_free(NULL, input, stk_a);
+		ft_free(NULL, NULL, stk_b);
+		ft_errors();
 	}
-	functions[index](stk_a, stk_b);
+	index = ft_index_move(movements, input);
+	if (index < 11)
+		functions[index](stk_a, stk_b);
+	else
+		flag = FALSE;
 	ft_free(movements, NULL, NULL);
-	return (TRUE);
+	return (flag);
+}
+
+static int	ft_read_input(t_stack *stk_a, t_stack *stk_b)
+{
+	int		flag1;
+	int		flag2;
+	char	*std_input;
+
+	flag1 = TRUE;
+	flag2 = TRUE;
+	std_input = get_next_line(0);
+	if (ft_is_sorted(stk_a->tab, stk_a->max) && std_input != NULL)
+		flag1 = FALSE;
+	while (std_input)
+	{
+		if (flag2 == TRUE)
+			flag2 = ft_do_move(stk_a, stk_b, std_input);
+		else
+			ft_do_move(stk_a, stk_b, std_input);
+		free(std_input);
+		std_input = get_next_line(0);
+	}
+	if (flag2 == FALSE)
+		return (1);
+	else if (flag1 == FALSE)
+		return (0);
+	else
+		return (3);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	*std_input;
-	t_bool	flag;
+	int		answer;
 
-	flag = TRUE;
 	stack_a = ft_set(argc, argv);
 	stack_b = ft_init_stack(stack_a->max, NULL);
-	std_input = get_next_line(0);
-	ft_useless_args(stack_a, stack_b, std_input);
-	while (std_input && flag == TRUE)
+	if (stack_b == NULL)
 	{
-		flag = ft_do_move(stack_a, stack_b, std_input);
-		free (std_input);
-		std_input = get_next_line(0);
+		ft_free(NULL, NULL, stack_b);
+		ft_errors();
 	}
-	if (ft_is_sorted(stack_a->tab, stack_a->max) == TRUE
-		&& flag == TRUE && stack_b->max == 0)
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
-	ft_free(NULL, std_input, stack_a);
+	answer = ft_read_input(stack_a, stack_b);
+	ft_answers(stack_a, stack_b, answer);
+	ft_free(NULL, NULL, stack_a);
 	ft_free(NULL, NULL, stack_b);
 	return (0);
 }
