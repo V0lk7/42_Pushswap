@@ -6,11 +6,11 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 09:51:30 by jduval            #+#    #+#             */
-/*   Updated: 2022/11/24 09:53:26 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:41:58 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
 {

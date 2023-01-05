@@ -6,7 +6,7 @@
 /*   By: jduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:56:59 by jduval            #+#    #+#             */
-/*   Updated: 2023/01/05 08:23:06 by jduval           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:43:56 by jduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_stack	*ft_set(int argc, char **argv)
 
 	if (argc < 2)
 		exit (0);
-	if (ft_pre_check == FALSE)
+	if (ft_pre_check(argv) == FALSE)
 		ft_errors();
 	list = ft_set_list(argv);
 	stack = ft_init_stack(ft_size_list(list), list);
